@@ -1,7 +1,13 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-from .routers import groups, users
+from .routers import groups, users, multiple_tags
+from fastapi.routing import APIRoute
+
+
+def custom_generate_unique_id(route: APIRoute):
+    return f"{route.name.split('_')[0].capitalize()}{route.tags[0]}"
+
 
 
 def api() -> FastAPI:
@@ -12,9 +18,10 @@ def api() -> FastAPI:
 
 def api_factory(title: str, allow_origins: list[str] = ["http://localhost:5000"]) -> FastAPI:
 
-    app = FastAPI(title=title)
+    app = FastAPI(title=title, generate_unique_id_function=custom_generate_unique_id)
     app.include_router(router=groups.router)
     app.include_router(router=users.router)
+    app.include_router(router=multiple_tags.router)
 
     app.add_middleware(
         CORSMiddleware,
