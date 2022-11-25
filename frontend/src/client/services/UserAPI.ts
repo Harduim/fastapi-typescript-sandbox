@@ -8,14 +8,14 @@ import type { CancelablePromise } from '../core/CancelablePromise';
 import { OpenAPI } from '../core/OpenAPI';
 import { request as __request } from '../core/request';
 
-export class UserService {
+export class UserAPI {
 
   /**
-   * Get Users
+   * Get All
    * @returns UserOut Successful Response
    * @throws ApiError
    */
-  public static getUser(): CancelablePromise<Array<UserOut>> {
+  public static getall(): CancelablePromise<Array<UserOut>> {
     return __request(OpenAPI, {
       method: 'GET',
       url: '/users/',
@@ -23,14 +23,15 @@ export class UserService {
   }
 
   /**
-   * Update User
-   * @param requestBody
+   * Update
    * @returns UserOut Successful Response
    * @throws ApiError
    */
-  public static updateUser(
+  public static update({
+    requestBody,
+  }: {
     requestBody: User,
-  ): CancelablePromise<UserOut> {
+  }): CancelablePromise<UserOut> {
     return __request(OpenAPI, {
       method: 'PUT',
       url: '/users/',
@@ -43,14 +44,15 @@ export class UserService {
   }
 
   /**
-   * Create User
-   * @param requestBody
+   * Create
    * @returns UserOut Successful Response
    * @throws ApiError
    */
-  public static createUser(
+  public static create({
+    requestBody,
+  }: {
     requestBody: User,
-  ): CancelablePromise<UserOut> {
+  }): CancelablePromise<UserOut> {
     return __request(OpenAPI, {
       method: 'POST',
       url: '/users/',
@@ -63,14 +65,15 @@ export class UserService {
   }
 
   /**
-   * Get User
-   * @param id
+   * Get
    * @returns UserOut Successful Response
    * @throws ApiError
    */
-  public static getUser1(
+  public static get({
+    id,
+  }: {
     id: number,
-  ): CancelablePromise<UserOut> {
+  }): CancelablePromise<UserOut> {
     return __request(OpenAPI, {
       method: 'GET',
       url: '/users/{id}',
@@ -84,14 +87,15 @@ export class UserService {
   }
 
   /**
-   * Delete User
-   * @param id
+   * Delete
    * @returns number Successful Response
    * @throws ApiError
    */
-  public static deleteUser(
+  public static delete({
+    id,
+  }: {
     id: number,
-  ): CancelablePromise<number> {
+  }): CancelablePromise<number> {
     return __request(OpenAPI, {
       method: 'DELETE',
       url: '/users/{id}',

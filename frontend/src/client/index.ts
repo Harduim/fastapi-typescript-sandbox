@@ -12,7 +12,7 @@ export type { User } from './models/User';
 export type { UserOut } from './models/UserOut';
 export type { ValidationError } from './models/ValidationError';
 
-export { GroupsService } from './services/GroupsService';
-export { MultipleTagsService } from './services/MultipleTagsService';
-export { TagsMultipleService } from './services/TagsMultipleService';
-export { UserService } from './services/UserService';
+export { GroupsAPI } from './services/GroupsAPI';
+export { MultipleTagsAPI } from './services/MultipleTagsAPI';
+export { TagsMultipleAPI } from './services/TagsMultipleAPI';
+export { UserAPI } from './services/UserAPI';

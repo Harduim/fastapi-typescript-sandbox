@@ -6,21 +6,21 @@ router = APIRouter(prefix="/users", tags=["User"])
 
 
 @router.get("/", response_model=list[UserOut])
-async def get_users():
+async def get_all():
     return []
 
 @router.post("/", response_model=UserOut)
-async def create_user(user_in: User):
+async def create(user_in: User):
     return user_in
 
 @router.put("/", response_model=UserOut)
-async def update_user(user_in: User):
+async def update(user_in: User):
     return user_in
 
 @router.delete("/{id}", response_model=int)
-async def delete_user(id:int):
+async def delete(id:int):
     return id
 
 @router.get("/{id}", response_model=UserOut)
-async def get_user(id:int):
+async def get(id:int):
     return {}

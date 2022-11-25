@@ -7,14 +7,14 @@ import type { CancelablePromise } from '../core/CancelablePromise';
 import { OpenAPI } from '../core/OpenAPI';
 import { request as __request } from '../core/request';
 
-export class MultipleTagsService {
+export class MultipleTagsAPI {
 
   /**
    * Get Users
    * @returns UserOut Successful Response
    * @throws ApiError
    */
-  public static getMultipleTags(): CancelablePromise<Array<UserOut>> {
+  public static getusers(): CancelablePromise<Array<UserOut>> {
     return __request(OpenAPI, {
       method: 'GET',
       url: '/multi-tags/',

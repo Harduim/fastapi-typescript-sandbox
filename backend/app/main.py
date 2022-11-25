@@ -6,7 +6,7 @@ from fastapi.routing import APIRoute
 
 
 def custom_generate_unique_id(route: APIRoute):
-    return f"{route.name.split('_')[0].capitalize()}{route.tags[0]}"
+    return f"{route.name.replace('_', '')}"
 
 
 
@@ -19,6 +19,7 @@ def api() -> FastAPI:
 def api_factory(title: str, allow_origins: list[str] = ["http://localhost:5000"]) -> FastAPI:
 
     app = FastAPI(title=title, generate_unique_id_function=custom_generate_unique_id)
+    # app = FastAPI(title=title)
     app.include_router(router=groups.router)
     app.include_router(router=users.router)
     app.include_router(router=multiple_tags.router)
